@@ -27,7 +27,7 @@ jobs:
 
     - name: Set repository name as env variable
       run: echo "repository_name=$(echo '${{ github.repository }}' | awk -F '/' '{print $2}')" >> $GITHUB_ENV
-      
+
     - name: set up JDK 17
       uses: actions/setup-java@v3
       with:
@@ -38,10 +38,19 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build gradle project
+      env:
+        MUTE_STORE_PASSWORD: ${{ secrets.MUTE_STORE_PASSWORD }}
+        MUTE_KEY_PASSWORD: ${{ MUTE_KEY_PASSWORD }}
       run: ./gradlew build
     - name: AssembleRelease
+      env:
+        MUTE_STORE_PASSWORD: ${{ secrets.MUTE_STORE_PASSWORD }}
+        MUTE_KEY_PASSWORD: ${{ MUTE_KEY_PASSWORD }}
       run: ./gradlew assembleRelease
     - name: Build app bundle release (AAB) - ${{ env.main_project_module }} module
+      env:
+        MUTE_STORE_PASSWORD: ${{ secrets.MUTE_STORE_PASSWORD }}
+        MUTE_KEY_PASSWORD: ${{ MUTE_KEY_PASSWORD }}
       run: ./gradlew ${{ env.main_project_module }}:bundleRelease
     - name: Upload APK Release - ${{ env.repository_name }}
       uses: actions/upload-artifact@v3
