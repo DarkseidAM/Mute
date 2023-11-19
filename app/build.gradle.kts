@@ -20,9 +20,9 @@ android {
     signingConfigs {
         create("release") {
             storeFile = file("cert/mute_keystore")
-            storePassword = System.getenv("mute_store_password")
+            storePassword = System.getenv("MUTE_STORE_PASSWORD")
             keyAlias = "key0"
-            keyPassword = System.getenv("mute_key_password")
+            keyPassword = System.getenv("MUTE_KEY_PASSWORD")
         }
     }
 
