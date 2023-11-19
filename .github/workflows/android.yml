@@ -18,6 +18,7 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    environment: Release
 
     steps:
     - uses: actions/checkout@v3
@@ -38,7 +39,7 @@ jobs:
       run: chmod +x gradlew
     - name: Build gradle project
       run: ./gradlew build
-    - name: Build with Gradle
+    - name: AssembleRelease
       run: ./gradlew assembleRelease
     - name: Build app bundle release (AAB) - ${{ env.main_project_module }} module
       run: ./gradlew ${{ env.main_project_module }}:bundleRelease
