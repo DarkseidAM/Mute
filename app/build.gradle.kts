@@ -11,10 +11,12 @@ android {
         applicationId = "com.am.mute"
         minSdk = 26
         targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 1000
+        versionName = "1.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        setProperty("archivesBaseName", "${applicationId}-v${versionName}(${versionCode})")
     }
 
     signingConfigs {
@@ -48,6 +50,7 @@ android {
     packaging {
         resources {
             excludes.add("/META-INF/{AL2.0,LGPL2.1}")
+            excludes.add("DebugProbesKt.bin")
         }
     }
 }
