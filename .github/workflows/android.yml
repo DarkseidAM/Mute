@@ -7,6 +7,8 @@ env:
   # The name of the Play Store
   playstore_name: Mute
 
+  ANDROID_HOME: /home/Adhish/Android
+
 on:
   push:
     branches: [ "main" ]
@@ -41,19 +43,16 @@ jobs:
       env:
         MUTE_STORE_PASSWORD: ${{ secrets.MUTE_STORE_PASSWORD }}
         MUTE_KEY_PASSWORD: ${{ secrets.MUTE_KEY_PASSWORD }}
-        ANDROID_HOME: /home/Adhish/Android
       run: ./gradlew build
     - name: AssembleRelease
       env:
         MUTE_STORE_PASSWORD: ${{ secrets.MUTE_STORE_PASSWORD }}
         MUTE_KEY_PASSWORD: ${{ secrets.MUTE_KEY_PASSWORD }}
-        ANDROID_HOME: /home/Adhish/Android
       run: ./gradlew assembleRelease
     - name: Build app bundle release (AAB) - ${{ env.main_project_module }} module
       env:
         MUTE_STORE_PASSWORD: ${{ secrets.MUTE_STORE_PASSWORD }}
         MUTE_KEY_PASSWORD: ${{ secrets.MUTE_KEY_PASSWORD }}
-        ANDROID_HOME: /home/Adhish/Android
       run: ./gradlew ${{ env.main_project_module }}:bundleRelease
     - name: Upload APK Release - ${{ env.repository_name }}
       uses: actions/upload-artifact@v3
