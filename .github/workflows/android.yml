@@ -55,12 +55,12 @@ jobs:
         MUTE_KEY_PASSWORD: ${{ secrets.MUTE_KEY_PASSWORD }}
       run: ./gradlew ${{ env.main_project_module }}:bundleRelease
     - name: Upload APK Release - ${{ env.repository_name }}
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: ${{ env.date_today }} - ${{ env.playstore_name }} - ${{ env.repository_name }} - APK(s) release generated
         path: ${{ env.main_project_module }}/build/outputs/apk/release/
     - name: Upload AAB (App Bundle) Release - ${{ env.repository_name }}
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: ${{ env.date_today }} - ${{ env.playstore_name }} - ${{ env.repository_name }} - App bundle(s) AAB release generated
         path: ${{ env.main_project_module }}/build/outputs/bundle/release/
