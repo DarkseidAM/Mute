@@ -30,8 +30,8 @@ pipeline {
         }
         stage("Push") {
             environment {
-                MUTE_STORE_PASSWORD = ${env.MUTE_STORE_PASSWORD}
-                MUTE_KEY_PASSWORD = ${env.MUTE_KEY_PASSWORD}
+                MUTE_STORE_PASSWORD = "${env.MUTE_STORE_PASSWORD}"
+                MUTE_KEY_PASSWORD = "${env.MUTE_KEY_PASSWORD}"
             }
             when {
                 branch 'main'
