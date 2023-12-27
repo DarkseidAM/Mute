@@ -11,7 +11,7 @@ class MainViewModel : ViewModel() {
         sharedPreferences: SharedPreferences,
         currentAudioValue: Int,
         currentNotificationValue: Int
-    ) = CoroutineScope(Dispatchers.IO).launch{
+    ) = CoroutineScope(Dispatchers.Default).launch{
         sharedPreferences.edit().apply {
             putInt(CURRENT_AUDIO_VOLUME, currentAudioValue)
             putInt(CURRENT_NOTIFICATION_VOLUME, currentNotificationValue)
