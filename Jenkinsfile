@@ -41,6 +41,7 @@ pipeline {
                 stage("Build") {
                     steps {
                         sh "${CHANGELOG_CMD}"
+                        sh 'chmod +x gradlew'
                         sh './gradlew clean assembleRelease bundleRelease'
                     }
 //                     post {
