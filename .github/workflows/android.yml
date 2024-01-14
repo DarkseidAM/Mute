@@ -7,8 +7,6 @@ env:
   # The name of the Play Store
   playstore_name: Mute
 
-  ANDROID_HOME: /home/Adhish/Android
-
 on:
   push:
     branches: [ "main" ]
