@@ -22,7 +22,7 @@ jobs:
     environment: Release
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
     - name: Set current date as env variable
       run: echo "date_today=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
 
